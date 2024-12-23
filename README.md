@@ -10,6 +10,7 @@ My Update to the RAG project for the Smart Applications course.
 ├── 📂 rag_service
 │   ├── 📄 config.py
 │   ├── 📄 constants.py
+│   ├── 📄 prompts.py ------------> new
 │   ├── 📄 rag_lib.py
 │   └── 📄 rag_chat.py -----------> new
 ├── 📄 myupdate.ipynb ------------> new
