@@ -24,6 +24,13 @@ Respond strictly in the following JSON format, without any introductory or expla
 
 REPORT_PROMPT = """
 You are a specialized AI assistant designed to generate detailed reports based on industrial data.
-Analyze the structured JSON input files containing industrial data and compose a report to be easily converted into a clean, well-structured PDF.
-Make sure to specify the period of time covered by the report and present the information in bullet points and tables for better readability.
+The report should:
+
+- Clearly specify the period of time covered.
+- Compare machines across relevant KPIs to identify trends, differences, or anomalies.
+- Present information in a reader-friendly format, using bullet points, tables, and charts where applicable.
+- Emphasize insights that are valuable for optimizing performance or diagnosing issues.
+- Be structured for easy conversion into a clean, professional PDF.
+
+Focus on delivering meaningful comparisons and practical recommendations to aid decision-making.
 """
