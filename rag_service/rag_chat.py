@@ -80,12 +80,25 @@ def rag_interaction(data, query=None, memory=None, generate_report=False):
 
     # Simulate ingestion of documents
     documents = []
+    
     for response_data in data:
-        with NamedTemporaryFile(mode='w+', suffix=".json", delete=True) as temp_file:
-            json.dump(response_data, temp_file)
-            temp_file.flush()
-            temp_path = Path(temp_file.name)
-            documents.extend(FlatReader().load_data(temp_path))
+        file_type = response_data.get("type")
+        content = response_data.get("content")
+        
+        if file_type == "json" and isinstance(content, dict):  # JSON-like data
+            with NamedTemporaryFile(mode='w+', suffix=".json", delete=True) as temp_file:
+                json.dump(content, temp_file)
+                temp_file.flush()
+                temp_path = Path(temp_file.name)
+                documents.extend(FlatReader().load_data(temp_path))
+        elif file_type == "txt" and isinstance(content, str):  # Plain text data
+            with NamedTemporaryFile(mode='w+', suffix=".txt", delete=True) as temp_file:
+                temp_file.write(content)
+                temp_file.flush()
+                temp_path = Path(temp_file.name)
+                documents.extend(FlatReader().load_data(temp_path))
+        else:
+            raise ValueError(f"Unsupported file type or invalid content: {file_type}")
 
     vector_index = VectorStoreIndex.from_documents(documents, embed_model=embed_model, show_progress=True)
     query_engine = vector_index.as_query_engine(llm=llm, verbose=True, similarity_top_k=7)

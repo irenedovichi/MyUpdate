@@ -5,8 +5,12 @@ My Update to the RAG project for the Smart Applications course.
 ```
 ./
 ├── 📂 data
+│   ├── 📄 documentation.txt -----> new
 │   ├── 📄 kpi_data.json
-│   └── 📄 machine_data.json
+│   ├── 📄 kpis.json -------------> new
+│   ├── 📄 machine_data.json
+│   ├── 📄 machines.json ---------> new
+│   └── 📄 report_data.json ------> new
 ├── 📂 rag_service
 │   ├── 📄 config.py
 │   ├── 📄 constants.py
