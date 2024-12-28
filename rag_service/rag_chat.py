@@ -110,7 +110,14 @@ def rag_interaction(data, query=None, memory=None, generate_report=False, index_
         query_engine = vector_index.as_query_engine(llm=llm, verbose=True, similarity_top_k=7)
 
         # Determine the prompt
-        full_prompt = REPORT_PROMPT
+        selected_prompt = REPORT_PROMPT
+
+
+
+        
+        conversation_context = memory.get_context() if memory else ""
+        report_context = memory.get_report_context() if memory else ""
+        full_prompt = f"{report_context}\n{conversation_context}\n{selected_prompt}\n{query}"
 
     else:
         print("Using chatbot mode...")
@@ -144,7 +151,7 @@ def rag_interaction(data, query=None, memory=None, generate_report=False, index_
 
             vector_index = VectorStoreIndex.from_documents(documents, embed_model=embed_model, show_progress=True)
 
-            # Save the computed index to a file
+            # Save the computed index to a file 
             with open(index_file, "wb") as f:
                 pickle.dump(vector_index, f)
 

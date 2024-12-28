@@ -16,8 +16,8 @@ My Update to the RAG project for the Smart Applications course.
 │   ├── 📄 config.py
 │   ├── 📄 constants.py
 │   ├── 📄 prompts.py ------------> new
-│   ├── 📄 rag_lib.py
-│   └── 📄 rag_chat.py -----------> new
+│   ├── 📄 rag_chat.py -----------> new
+│   └── 📄 rag_lib.py
 ├── 📄 myupdate.ipynb ------------> new
 ├── 📄 rag_notebook.ipynb
 └── 📄 requirements.txt
