@@ -19,7 +19,6 @@ class ChatMemory:
     def __init__(self, max_history=5):
         self.max_history = max_history
         self.history = []
-        self.last_report = None  # Stores the last generated report
 
     def add_interaction(self, query, response):
         """
