@@ -30,12 +30,6 @@ class ChatMemory:
         if len(self.history) > self.max_history:
             self.history.pop(0)
 
-    def save_report(self, report):
-        """
-        Save the last generated report.
-        """
-        self.last_report = report
-
     def get_context(self):
         """
         Get the conversation history formatted as context for the next query.
@@ -45,12 +39,6 @@ class ChatMemory:
             for item in self.history
         )
         return conversation_context
-
-    def get_report_context(self):
-        """
-        Get the last generated report as context.
-        """
-        return f"Report:\n{self.last_report}" if self.last_report else ""
     
 
 def analyze_query(query):
@@ -110,14 +98,7 @@ def rag_interaction(data, query=None, memory=None, generate_report=False, index_
         query_engine = vector_index.as_query_engine(llm=llm, verbose=True, similarity_top_k=7)
 
         # Determine the prompt
-        selected_prompt = REPORT_PROMPT
-
-
-
-        
-        conversation_context = memory.get_context() if memory else ""
-        report_context = memory.get_report_context() if memory else ""
-        full_prompt = f"{report_context}\n{conversation_context}\n{selected_prompt}\n{query}"
+        full_prompt = REPORT_PROMPT
 
     else:
         print("Using chatbot mode...")
@@ -160,16 +141,12 @@ def rag_interaction(data, query=None, memory=None, generate_report=False, index_
         # Determine the prompt
         selected_prompt = analyze_query(query)
         conversation_context = memory.get_context() if memory else ""
-        report_context = memory.get_report_context() if memory else ""
-        full_prompt = f"{report_context}\n{conversation_context}\n{selected_prompt}\n{query}"
+        full_prompt = f"{conversation_context}\n{selected_prompt}\n{query}"
 
     response = query_engine.query(full_prompt)
 
     # Store the result
     if memory:
-        if generate_report:
-            memory.save_report(response)  # Save report in memory
-        elif query:
-            memory.add_interaction(query, response)
+        memory.add_interaction(query, response)
 
     return response
