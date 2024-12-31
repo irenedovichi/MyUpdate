@@ -79,7 +79,7 @@ export function Chatbot() {
         };
 
         await fetch(
-          `https://api-656930476914.europe-west1.run.app/api/v1.0/chat/reset`, // <--- check if this is the correct endpoint for resetting chat memory in the backend
+          `https://api-656930476914.europe-west1.run.app/api/v1.0/chat/reset`, 
           requestOptions
         );
       } catch (error) {
