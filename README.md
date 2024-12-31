@@ -2,6 +2,7 @@
 My Update to the RAG project for the Smart Applications course.
 
 **Content**
+
 My update is to move from a query engine to a chat engine, i.e. allow follow-up questions. I implemented this update both to the local RAG (developed with LlamaIndex and Ollama) and to the RAG integrated with the interface (which uses OpenAI).
 
 **Repository Structure:**
@@ -39,4 +40,4 @@ My update is to move from a query engine to a chat engine, i.e. allow follow-up 
 - `rag_chat.py`: updated version of the sa-team-d/rag/rag_service/rag_lib.py file
 - `Chatbot_new.js`: updated version of the sa-team-d/gui/src/components/Chatbot.js file
 - `controller_new.py`: updated version of the sa-team-d/api/src/plugins/chat/controller.py file
-- `myupdate.ipynb`: main notebook where I extracted the data to generate a report and tested the updated local RAG
+- `myupdate.ipynb`: main notebook where I extracted the report_data file and tested the updated local RAG
