@@ -85,6 +85,8 @@ export function Chatbot() {
       } catch (error) {
         console.error("Failed to reset chat memory:", error);
       }
+      // Clear the chat messages in the local state
+      setMessages([]);
     }
 
     // Toggle the chatbot's open/closed state
