@@ -9,13 +9,16 @@ My update is to move from a query engine to a chat engine, i.e. allow follow-up 
 ```
 ./
 ├── 📂 data
+│   ├── 📄 costs.json 
 │   ├── 📄 documentation.txt -----> new
+│   ├── 📄 energies.json 
 │   ├── 📄 kpi_data.json
 │   ├── 📄 kpis.json -------------> new
 │   ├── 📄 machine_data.json
 │   ├── 📄 machines.json ---------> new
 │   ├── 📄 report_data.json ------> new
-│   └── 📄 smart_app_data.pkl
+│   ├── 📄 smart_app_data.pkl 
+│   └── 📄 utilizations.json 
 ├── 📂 rag_service
 │   ├── 📄 config.py
 │   ├── 📄 constants.py
