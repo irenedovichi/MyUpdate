@@ -1,5 +1,5 @@
 # MyUpdate
-My Update to the RAG project for the Smart Applications course.
+My Update to the [RAG project](https://github.com/sa-team-d) for the Smart Applications course.
 
 **Content**
 
